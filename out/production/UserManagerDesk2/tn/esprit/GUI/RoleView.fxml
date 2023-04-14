@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Service.RoleViewController">
+    <stylesheets>
+        <URL value="@roleview.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="29.0" layoutY="30.0" text="Roles" textFill="DARKTURQUOISE">
+         <font>
+            <Font name="Verdana Bold" size="31.0" />
+         </font>
+      </Label>
+      <Separator layoutY="81.0" prefHeight="9.0" prefWidth="600.0" />
+      <Button layoutX="29.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#getAddView" prefHeight="30.0" prefWidth="60.0" text="Add" />
+      <Button layoutX="110.0" layoutY="98.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Print" />
+      <Button layoutX="189.0" layoutY="98.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Refresh" />
+      <TextField fx:id="SearchFld" layoutX="331.0" layoutY="100.0" prefHeight="30.0" prefWidth="166.0" />
+      <Button layoutX="515.0" layoutY="98.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Search" />
+      <TableView id="rolesTable" fx:id="roleTable" layoutX="29.0" layoutY="144.0" prefHeight="200.0" prefWidth="547.0">
+        <columns>
+          <TableColumn id="idCol" fx:id="idCol" prefWidth="75.0" text="Id" />
+          <TableColumn id="nomCol" fx:id="nomCol" prefWidth="210.39996337890625" text="Role" />
+            <TableColumn id="editCol" fx:id="editCol" prefWidth="259.199951171875" text="Actions" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
