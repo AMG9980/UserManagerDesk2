@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.39">
+    <root id="1">
+      <DefaultCasing>lower/lower</DefaultCasing>
+      <DefaultEngine>MyISAM</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <ServerVersion>5.7.36</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="bourlaforme">
+      <Current>1</Current>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="3" parent="1" name="carte">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="4" parent="1" name="fithub3">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="5" parent="1" name="hamza">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="6" parent="1" name="information_schema">
+      <CollationName>utf8_general_ci</CollationName>
+    </schema>
+    <schema id="7" parent="1" name="mysql">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="8" parent="1" name="pdev_db">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="9" parent="1" name="performance_schema">
+      <CollationName>utf8_general_ci</CollationName>
+    </schema>
+    <schema id="10" parent="1" name="pi">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="11" parent="1" name="project_pidev">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="12" parent="1" name="sys">
+      <CollationName>utf8_general_ci</CollationName>
+    </schema>
+  </database-model>
+</dataSource>

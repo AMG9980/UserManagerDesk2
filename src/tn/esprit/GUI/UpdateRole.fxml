@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="321.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Service.AddRoleController">
+    <children>
+       
+        <Label layoutX="63.0" layoutY="83.0" text="Username" />
+        <Label layoutX="63.0" layoutY="125.0" text="Email" />
+        <Label layoutX="63.0" layoutY="167.0" text="Password" />
+        <Label layoutX="63.0" layoutY="209.0" text="Role" />
+        <Label layoutX="63.0" layoutY="251.0" text="Is Active" />
+        <TextField fx:id="usernameFld" layoutX="163.0" layoutY="79.0" prefWidth="200.0" />
+        <TextField fx:id="emailFld" layoutX="163.0" layoutY="121.0" prefWidth="200.0" />
+        <TextField fx:id="passwordFld" layoutX="163.0" layoutY="163.0" prefWidth="200.0" />
+        <CheckBox fx:id="isActiveFld" layoutX="163.0" layoutY="247.0" text="Active" />
+        <Button id="save" layoutX="94.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#save" text="Save" />
+        <Button id="cancel" layoutX="197.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#cancel" text="Cancel" />
+        <ComboBox fx:id="roleComboBox" layoutX="163.0" layoutY="205.0" prefWidth="200.0" />
+    
+        
+        <!-- other nodes in AddUserView -->
+   
+        <Separator layoutY="74.0" prefHeight="8.0" prefWidth="355.0" />
+    </children>
+</AnchorPane>

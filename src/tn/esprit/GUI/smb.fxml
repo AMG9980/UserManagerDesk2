@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Service.SmbController">
+    <children>
+        <AnchorPane fx:id="contentPane" layoutX="201.0" layoutY="51.0" prefHeight="429.0" prefWidth="555.0" style="-fx-background-color: #ffff00;" />
+        <AnchorPane prefHeight="51.0" prefWidth="758.0" style="-fx-background-color: #00ffff;">
+         <children>
+            <Button fx:id="exitBtn" layoutX="696.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#logOut" text="exit" />
+         </children></AnchorPane>
+        <AnchorPane fx:id="sidebarPane" layoutX="1.0" layoutY="51.0" prefHeight="429.0" prefWidth="200.0" style="-fx-background-color: #7C7272;">
+            <children>
+                <Button layoutX="29.0" layoutY="27.0" mnemonicParsing="false" onAction="#UsersManagement" prefHeight="25.0" prefWidth="125.0" text="Users Management" />
+                <Button layoutX="29.0" layoutY="73.0" mnemonicParsing="false" onAction="#RolesManagement" prefHeight="25.0" prefWidth="125.0" text="Roles Management" />
+                <Button layoutX="29.0" layoutY="127.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="View3" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

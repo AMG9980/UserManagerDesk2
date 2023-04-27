@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="408.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.Service.AddUserViewController">
+   <children>
+      <Label layoutX="30.0" layoutY="31.0" text="Add User" textFill="DARKTURQUOISE">
+         <font>
+            <Font name="Verdana" size="32.0" />
+         </font>
+      </Label>
+      <Button fx:id="save" layoutX="100.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #4169E1;" text="Save" textFill="#141414">
+         <effect>
+            <Reflection />
+         </effect>
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button id="cancel" fx:id="cancel" layoutX="244.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FF4500;" text="Cancel">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Button>
+      <Separator layoutX="10.0" layoutY="84.0" prefHeight="8.0" prefWidth="355.0" />
+      <Label layoutX="38.0" layoutY="131.0" text="Username">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="173.0" text="Email">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="215.0" text="Password">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="257.0" text="Role">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="38.0" layoutY="299.0" text="Is Active">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameFld" layoutX="138.0" layoutY="127.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="emailFld" layoutX="138.0" layoutY="169.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextField fx:id="passwordFld" layoutX="138.0" layoutY="211.0" prefHeight="25.0" prefWidth="224.0" />
+      <CheckBox fx:id="isActiveFld" layoutX="138.0" layoutY="299.0" prefHeight="25.0" prefWidth="60.0" text="Active" />
+      <ComboBox fx:id="roleComboBox" layoutX="138.0" layoutY="253.0" prefHeight="25.0" prefWidth="224.0" />
+   </children>
+        
+</AnchorPane>
