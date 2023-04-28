@@ -5,19 +5,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BonussController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@ayoub.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BonussController">
    <children>
-      <TableView layoutX="70.0" layoutY="107.0" prefHeight="420.0" prefWidth="860.0">
+      <TableView fx:id="TableBonuss" layoutX="70.0" layoutY="121.0" prefHeight="420.0" prefWidth="860.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="Colnom_b1" prefWidth="162.0" text="nom_b1" />
-            <TableColumn fx:id="Colnom_b2" prefWidth="159.0" text="nom_b2" />
-            <TableColumn fx:id="Colnom_b3" prefWidth="156.0" text="nom_b3" />
-            <TableColumn fx:id="Colnom_b4" prefWidth="164.0" text="nom_b4" />
-            <TableColumn fx:id="Colid_pack" prefWidth="143.0" text="id_pack" />
+          <TableColumn fx:id="Colnom_b1" prefWidth="195.0" text="nom_b1" />
+            <TableColumn fx:id="Colnom_b2" prefWidth="155.0" text="nom_b2" />
+            <TableColumn fx:id="Colnom_b3" prefWidth="166.0" text="nom_b3" />
+            <TableColumn fx:id="Colnom_b4" prefWidth="180.0" text="nom_b4" />
+            <TableColumn fx:id="Colid_pack" prefWidth="163.0" text="id_pack" />
         </columns>
       </TableView>
-      <Button fx:id="home" layoutX="70.0" layoutY="32.0" mnemonicParsing="false" onAction="#OnHomeClicked" text="HOME" />
-      <Button fx:id="ajouter" layoutX="70.0" layoutY="552.0" mnemonicParsing="false" onAction="#onAddClicked" text="AJOUTER" />
+      <Button fx:id="home" layoutX="834.0" layoutY="726.0" mnemonicParsing="false" onAction="#OnHomeClicked" text="HOME" />
+      <Button fx:id="Retour" layoutX="35.0" layoutY="31.0" mnemonicParsing="false" onAction="#OnRetourClicked" text="Retour" />
    </children>
 </AnchorPane>

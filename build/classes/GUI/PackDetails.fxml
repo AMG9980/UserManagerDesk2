@@ -2,19 +2,58 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.PackDetailsController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@ayoub.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PackDetailsController">
    <children>
-      <Label fx:id="labelID" layoutX="368.0" layoutY="118.0" text="Label" />
-      <Label fx:id="labelPrix" layoutX="368.0" layoutY="217.0" text="Label" />
-      <Label fx:id="labelNom" layoutX="368.0" layoutY="163.0" text="Label" />
-      <Label fx:id="labelDesc" layoutX="368.0" layoutY="272.0" text="Label" />
-      <Label fx:id="labelImage" layoutX="368.0" layoutY="325.0" text="Label" />
-      <Button fx:id="btnModif" layoutX="256.0" layoutY="543.0" mnemonicParsing="false" onAction="#OnModifClicked" text="Modifier" />
-      <Button fx:id="Btnsupp" layoutX="386.0" layoutY="543.0" mnemonicParsing="false" onAction="#onsuppclicked" text="Supprimer" />
-      <Button fx:id="gohome" layoutX="813.0" layoutY="682.0" mnemonicParsing="false" onAction="#onHomeclicked" text="Home" />
-      <Button fx:id="btnretour" layoutX="70.0" layoutY="67.0" mnemonicParsing="false" onAction="#onretourclicked" text="Retour" />
+      <Pane layoutX="118.0" layoutY="118.0" prefHeight="601.0" prefWidth="765.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="AcheterS" layoutX="126.0" layoutY="536.0" mnemonicParsing="false" onAction="#OnStripeClicked" style="-fx-background-color: #3186ce;" text="Achat Stripe" />
+            <Button fx:id="AcheterP" layoutX="126.0" layoutY="483.0" mnemonicParsing="false" onAction="#OnAcheterClicked" style="-fx-background-color: #3186ce;" text="Acheter Pack" />
+            <Button fx:id="Btnsupp" layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#onsuppclicked" text="Supprimer" />
+            <ImageView fx:id="imagePreview" fitHeight="341.0" fitWidth="379.0" layoutX="354.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="23.0" prefWidth="87.0" text="ID_Pack :">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="75.0" prefHeight="23.0" prefWidth="87.0" text="Nom :">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="134.0" prefHeight="23.0" prefWidth="87.0" text="Prix :">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="184.0" prefHeight="23.0" prefWidth="116.0" text="Description :">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label fx:id="labelPrix" layoutX="241.0" layoutY="243.0" text="Label">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font></Label>
+      <Label fx:id="labelNom" layoutX="241.0" layoutY="184.0" text="Label">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font></Label>
+      <Button fx:id="btnModif" layoutX="243.0" layoutY="542.0" mnemonicParsing="false" onAction="#OnModifClicked" prefHeight="42.0" prefWidth="87.0" text="Modifier" />
+      <Button fx:id="gohome" layoutX="816.0" layoutY="730.0" mnemonicParsing="false" onAction="#onHomeclicked" text="Home" />
+      <Button fx:id="btnretour" layoutX="46.0" layoutY="37.0" mnemonicParsing="false" onAction="#onretourclicked" text="Retour" />
+      <TextArea fx:id="labelDesc" layoutX="241.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="labelID" disable="true" layoutX="241.0" layoutY="125.0" text="Label">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

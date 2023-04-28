@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="an" prefHeight="952.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ChatController">
+      <children>
+      <TextField fx:id="ASK" layoutX="328.0" layoutY="174.0" onAction="#UserA" prefHeight="61.0" prefWidth="661.0" />
+      <TextArea fx:id="textchat" layoutX="328.0" layoutY="291.0" prefHeight="371.0" prefWidth="661.0" promptText="coversation BOT / utilisateur">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextArea>
+      <Pane prefHeight="952.0" prefWidth="200.0" style="-fx-background-color: D6D5F2;">
+         <children>
+            <Circle fill="WHITE" layoutX="100.0" layoutY="80.0" radius="54.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="56.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/chat.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="65.0" layoutY="146.0" text="Capuce">
+               <font>
+                  <Font name="Britannic Bold" size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="Home" layoutX="75.0" layoutY="285.0" mnemonicParsing="false" onAction="#OnHomeClicked" prefHeight="31.0" prefWidth="101.0" text="HOME" />
+            <ImageView fitHeight="48.0" fitWidth="47.0" layoutX="14.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/home.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#1fff44" layoutX="176.0" layoutY="26.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Pane>
+      <Label layoutX="260.0" layoutY="77.0" prefHeight="31.0" prefWidth="440.0" text="Feel free to ask Capuce about anything" textFill="#00a6ff">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="210.0" layoutY="194.0" prefHeight="21.0" prefWidth="108.0" text="Your Question :">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="305.0" prefHeight="21.0" prefWidth="68.0" text="Capuce : ">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font>
+      </Label>
+      
+     
+      
+   </children>
+</AnchorPane>

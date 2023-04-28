@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +28,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.controlsfx.control.Notifications;
 import services.ServicePack;
 
 /**
@@ -47,7 +50,6 @@ public class UpdatePackController implements Initializable {
     private ImageView imagePreview;
     @FXML
     private Button btnImage;
-    @FXML
     private Label imagePath;
     @FXML
     private Button btnModifi;
@@ -55,6 +57,8 @@ public class UpdatePackController implements Initializable {
     private Button btnRetour;
     private ServicePack sp = new ServicePack();
     private Pack p;
+    @FXML
+    private Button Home;
 
     /**
      * Initializes the controller class.
@@ -67,7 +71,6 @@ public class UpdatePackController implements Initializable {
         tfDesc.setText(p.getDesc());
         tfnom.setText(p.getNom());
         tfPrix.setText(String.valueOf(p.getPrix()));
-        imagePath.setText(p.getImage());
         imagePreview.setImage(new Image(new File(p.getImage().replace('/', '\\')).toURI().toString()));
     }
 
@@ -115,6 +118,10 @@ public class UpdatePackController implements Initializable {
             sp.modifier(p);
             
             try {
+                Notifications.create()
+        .title("Succès")
+        .text("Pack Modifié !")
+        .showInformation(); 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("PackDetails.fxml"));
                 Parent root = loader.load();
                 PackDetailsController controller = loader.getController();
@@ -146,6 +153,18 @@ public class UpdatePackController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+    }
+
+    @FXML
+    private void OnHomeClicked(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BackHome.fxml"));
+            Parent root = loader.load();
+            Home.getScene().setRoot(root);
+        } catch (IOException ex) {
+            Logger.getLogger(AddPackController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
 }

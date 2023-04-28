@@ -30,6 +30,9 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import services.ServicePack;
 
+import org.controlsfx.control.Notifications;
+
+
 /**
  * FXML Controller class
  *
@@ -58,6 +61,8 @@ public class AddPackController implements Initializable {
     
      private ServicePack sp = new ServicePack();
      private Pack p = new Pack();
+     
+     public static Pack PackAjoute;
     
 
     /**
@@ -109,16 +114,25 @@ public class AddPackController implements Initializable {
 
     @FXML
     private void onAjouterClicked(ActionEvent event) {
-             if (verif()) {
-            p.setPrix(Integer.parseInt(tfPrix.getText()));
+            if (verif()) {
+                   
+            p.setPrix(Integer.parseInt(tfPrix.getText()));            
             p.setDesc(tfDesc.getText());
             p.setNom(tfNom.getText());
             p.setImage(p.getImage().replace('/', '\\'));
             sp.ajouter(p);
-             JOptionPane.showMessageDialog(null, "Pack ajouté !");
             
+            
+            
+          
+          
+            
+        Notifications.create()
+        .title("Succès")
+        .text("Pack ajouté ! Vous Devez attribuer des Bonus à votre Pack !")
+        .showInformation();        
             try {
-              FXMLLoader loader = new FXMLLoader(getClass().getResource("Packs.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBonus.fxml"));
             Parent root = loader.load();
             ajouter.getScene().setRoot(root);
 

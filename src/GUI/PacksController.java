@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,9 +23,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.ServicePack;
@@ -36,8 +41,6 @@ import services.ServicePack;
  */
 public class PacksController implements Initializable {
 
-    @FXML
-    private TableColumn<Pack, Integer> colID;
     @FXML
     private TableColumn<Pack, String> ColNom;
     @FXML
@@ -54,6 +57,12 @@ public class PacksController implements Initializable {
     private Button Add;
     @FXML
     private Button home;
+    @FXML
+    private TextField recherche;
+    
+    private FilteredList<Pack> filteredPacks = new FilteredList<>(observablePacks, p -> true);
+    @FXML
+    private Button AfficherB;
 
     /**
      * Initializes the controller class.
@@ -61,36 +70,69 @@ public class PacksController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            // TODO
-            AfficherPacks();
-        } catch (SQLException ex) {
-            Logger.getLogger(PacksController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(PacksController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }  
-    
-    
-    private void AfficherPacks() throws SQLException, IOException {
-            ServicePack ps = new ServicePack();
-            List<Pack> lp = ps.getAll();
-         
-          colID.setCellValueFactory(new PropertyValueFactory<Pack, Integer>("id"));
-
-        ColNom.setCellValueFactory(new PropertyValueFactory<Pack, String>("nom"));
-     
-        ColPrix.setCellValueFactory(new PropertyValueFactory<Pack, Integer>("prix"));
-        
-        ColDesc.setCellValueFactory(new PropertyValueFactory<Pack, String>("Desc"));
-
-        ColImage.setCellValueFactory(new PropertyValueFactory<Pack, String>("image"));
-        
-      
-        
-         observablePacks = FXCollections.observableArrayList(lp);
-        TablePacks.setItems(observablePacks);
-       
+        AfficherPacks();
+        FilteredList<Pack> filteredPacks = new FilteredList<>(observablePacks, p -> true);
+        recherche.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredPacks.setPredicate(pack -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (pack.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+        TablePacks.setItems(filteredPacks);
+    } catch (SQLException ex) {
+        Logger.getLogger(PacksController.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(PacksController.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
+
+
+
+
+
+
+    
+    
+    
+private void AfficherPacks() throws SQLException, IOException {
+    ServicePack ps = new ServicePack();
+    List<Pack> lp = ps.getAll();
+    
+    ColNom.setCellValueFactory(new PropertyValueFactory<Pack, String>("nom"));
+    ColPrix.setCellValueFactory(new PropertyValueFactory<Pack, Integer>("prix"));
+    ColDesc.setCellValueFactory(new PropertyValueFactory<Pack, String>("Desc"));
+
+    // Modifier la cell factory de la colonne ColImage
+    ColImage.setCellFactory(column -> {
+        return new TableCell<Pack, String>() {
+            private final ImageView imageView = new ImageView();
+            
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setGraphic(null);
+                } else {
+                    // Charger l'image depuis son chemin et l'afficher dans l'ImageView
+                    Image image = new Image(item);
+                    imageView.setImage(image);
+                    imageView.setFitWidth(50);
+                    imageView.setFitHeight(50);
+                    setGraphic(imageView);
+                }
+            }
+        };
+    });
+
+    observablePacks = FXCollections.observableArrayList(lp);
+    TablePacks.setItems(observablePacks);
+}
     
 
     @FXML
@@ -138,6 +180,29 @@ public class PacksController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(PacksController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void OnRechercheClicked(ActionEvent event) {
+        recherche.textProperty().addListener((observable, oldValue, newValue) -> {
+    filteredPacks.setPredicate(pack -> {
+        if (newValue == null || newValue.isEmpty()) {
+            return true;
+        }
+        String lowerCaseFilter = newValue.toLowerCase();
+        if (pack.getNom().toLowerCase().contains(lowerCaseFilter)) {
+            return true;
+        }
+        return false;
+    });
+});
+    }
+
+    @FXML
+    private void OnAfficherBClicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Bonuss.fxml"));
+        Parent root = loader.load();
+        AfficherB.getScene().setRoot(root);
     }
     
 }

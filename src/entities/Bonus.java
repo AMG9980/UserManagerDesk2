@@ -13,7 +13,7 @@ public class Bonus {
     
     private int id ; 
     private String  bonus1 , bonus2 ,bonus3 ,bonus4 ;
-    Pack p  ; 
+    Pack p ;
 
     public Bonus() {
     }
@@ -53,8 +53,8 @@ public class Bonus {
 
     public String getBonus2() {
         return bonus2;
-    }
-
+    } 
+    
     public void setBonus2(String bonus2) {
         this.bonus2 = bonus2;
     }
@@ -86,6 +86,10 @@ public class Bonus {
     @Override
     public String toString() {
         return "Bonus{" + "id=" + id + ", bonus1=" + bonus1 + ", bonus2=" + bonus2 + ", bonus3=" + bonus3 + ", bonus4=" + bonus4 + ", p=" + p + '}';
+    }
+
+    public void setP(int id_PackAjoute) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

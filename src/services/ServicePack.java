@@ -39,6 +39,8 @@ public class ServicePack implements IService<Pack> {
 
             pstmt.executeUpdate();
             System.out.println("Pack ajouté");
+            
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

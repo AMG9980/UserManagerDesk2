@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PacksController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@ayoub.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PacksController">
    <children>
-      <Label layoutX="350.0" layoutY="3.0" prefHeight="128.0" prefWidth="218.0" text="Gestion Packs" textAlignment="CENTER" textFill="#ff0909">
-         <font>
-            <Font name="System Bold" size="31.0" />
-         </font>
-      </Label>
-      <TableView fx:id="TablePacks" layoutX="96.0" layoutY="154.0" onMouseClicked="#handleTableRowSelection" prefHeight="531.0" prefWidth="766.0">
+      <TableView fx:id="TablePacks" layoutX="96.0" layoutY="143.0" onMouseClicked="#handleTableRowSelection" prefHeight="542.0" prefWidth="847.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="95.0" text="ID" />
-          <TableColumn fx:id="ColNom" prefWidth="148.0" text="Nom" />
-            <TableColumn fx:id="ColPrix" prefWidth="149.0" text="Prix" />
-            <TableColumn fx:id="ColDesc" prefWidth="185.0" text="Description" />
-            <TableColumn fx:id="ColImage" prefWidth="188.0" text="Image" />
+          <TableColumn fx:id="ColNom" prefWidth="157.0" text="Nom" />
+            <TableColumn fx:id="ColPrix" prefWidth="172.0" text="Prix" />
+            <TableColumn fx:id="ColDesc" prefWidth="199.0" text="Description" />
+            <TableColumn fx:id="ColImage" prefWidth="302.0" text="Image" />
         </columns>
       </TableView>
-      <Button fx:id="home" layoutX="46.0" layoutY="36.0" mnemonicParsing="false" onAction="#OnHomeClicked" text="Home" />
-      <Button fx:id="Add" layoutX="886.0" layoutY="341.0" mnemonicParsing="false" onAction="#onAddClicked" text="Ajouter" />
+      <Button fx:id="home" layoutX="26.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnHomeClicked" text="Home" />
+      <Button fx:id="Add" layoutX="96.0" layoutY="701.0" mnemonicParsing="false" onAction="#onAddClicked" prefHeight="42.0" prefWidth="98.0" text="Ajouter" />
+      <TextField fx:id="recherche" layoutX="96.0" layoutY="106.0" onAction="#OnRechercheClicked" prefHeight="31.0" prefWidth="227.0" />
+      <ImageView fitHeight="39.0" fitWidth="45.0" layoutX="320.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rech.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="AfficherB" layoutX="773.0" layoutY="69.0" mnemonicParsing="false" onAction="#OnAfficherBClicked" prefHeight="55.0" prefWidth="162.0" text="Afficher Bonus" />
    </children>
 </AnchorPane>

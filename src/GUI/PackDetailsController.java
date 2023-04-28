@@ -6,6 +6,7 @@
 package GUI;
 
 import entities.Pack;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -23,6 +24,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import org.controlsfx.control.Notifications;
 import services.ServicePack;
 
 /**
@@ -39,8 +44,7 @@ public class PackDetailsController implements Initializable {
     @FXML
     private Label labelNom;
     @FXML
-    private Label labelDesc;
-    @FXML
+    private TextArea labelDesc;
     private Label labelImage;
     @FXML
     private Button btnModif;
@@ -52,6 +56,13 @@ public class PackDetailsController implements Initializable {
     private Button btnretour;
 
     public static int id_update;
+    @FXML
+    private ImageView imagePreview;
+    @FXML
+    private Button AcheterP;
+    @FXML
+    private Button AcheterS;
+    public static String choix;
 
     /**
      * Initializes the controller class.
@@ -66,7 +77,8 @@ public class PackDetailsController implements Initializable {
         labelNom.setText(p.getNom());
         labelPrix.setText(String.valueOf(p.getPrix()));
         labelDesc.setText(p.getDesc());
-        labelImage.setText(p.getImage());
+        imagePreview.setImage(new Image(new File(p.getImage().replace('/', '\\')).toURI().toString()));
+        choix=labelNom.getText();
     }
 
     @FXML
@@ -101,6 +113,10 @@ public class PackDetailsController implements Initializable {
         // If the user clicks "OK", delete the fournisseur
         if (result.get() == ButtonType.OK) {
             try {
+                Notifications.create()
+        .title("Succès")
+        .text("Pack supprimé !")
+        .showInformation(); 
                 ServicePack sp = new ServicePack();
                 sp.supprimer(Integer.parseInt(labelID.getText()));
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Packs.fxml"));
@@ -135,6 +151,20 @@ public class PackDetailsController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(AddPackController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void OnAcheterClicked(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Achat.fxml"));
+            Parent root = loader.load();
+            AcheterP.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void OnStripeClicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stripe.fxml"));
+            Parent root = loader.load();
+            AcheterP.getScene().setRoot(root);
     }
 
 }

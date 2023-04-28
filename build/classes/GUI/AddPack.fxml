@@ -6,21 +6,35 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="GUI.AddPackController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" stylesheets="@ayoub.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddPackController">
    <children>
-      <Label layoutX="156.0" layoutY="121.0" text="Nom" />
-      <Label layoutX="156.0" layoutY="172.0" text="Prix" />
-      <Label layoutX="131.0" layoutY="259.0" text="Description" />
-      <Label fx:id="imagePath" layoutX="722.0" layoutY="183.0" text="Label" />
-      <TextField fx:id="tfNom" layoutX="228.0" layoutY="116.0" />
-      <TextField fx:id="tfPrix" layoutX="228.0" layoutY="168.0" />
+      <Pane layoutX="71.0" layoutY="84.0" prefHeight="611.0" prefWidth="858.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="imagePreview" fitHeight="310.0" fitWidth="345.0" layoutX="367.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Label layoutX="116.0" layoutY="121.0" prefHeight="42.0" prefWidth="93.0" text="Nom :">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font></Label>
+      <Label layoutX="116.0" layoutY="172.0" prefHeight="42.0" prefWidth="93.0" text="Prix  :">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font></Label>
+      <Label layoutX="113.0" layoutY="268.0" text="Description :">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font></Label>
+      <Label fx:id="imagePath" layoutX="694.0" layoutY="54.0" text="Label" textAlignment="JUSTIFY" />
+      <TextField fx:id="tfNom" layoutX="229.0" layoutY="127.0" />
+      <TextField fx:id="tfPrix" layoutX="228.0" layoutY="178.0" />
       <TextArea fx:id="tfDesc" layoutX="222.0" layoutY="259.0" prefHeight="200.0" prefWidth="200.0" />
-      <ImageView fx:id="imagePreview" fitHeight="150.0" fitWidth="200.0" layoutX="640.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="addImage" layoutX="684.0" layoutY="243.0" mnemonicParsing="false" onAction="#OnAddimgClicked" text="Inserer Image" />
-      <Button fx:id="ajouter" layoutX="287.0" layoutY="542.0" mnemonicParsing="false" onAction="#onAjouterClicked" text="Ajouter" />
+      <Button fx:id="addImage" layoutX="629.0" layoutY="439.0" mnemonicParsing="false" onAction="#OnAddimgClicked" stylesheets="@ayoub.css" text="Inserer Image" />
+      <Button fx:id="ajouter" layoutX="222.0" layoutY="542.0" mnemonicParsing="false" onAction="#onAjouterClicked" text="Ajouter" />
       <Button fx:id="btnREtour" layoutX="28.0" layoutY="14.0" mnemonicParsing="false" onAction="#retourclick" text="Retour" />
-      <Button fx:id="goHome" layoutX="782.0" layoutY="668.0" mnemonicParsing="false" onAction="#onHomeclick" text="Home" />
+      <Button fx:id="goHome" layoutX="843.0" layoutY="730.0" mnemonicParsing="false" onAction="#onHomeclick" text="Home" />
    </children>
 </AnchorPane>

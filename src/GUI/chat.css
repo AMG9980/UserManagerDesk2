@@ -1,0 +1,8 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.root {
+-fx-background-image: url("file:///C:/xampp/htdocs/Gestion_Pack/src/images/bot.JPG");
+-fx-background-size: cover;
+}
