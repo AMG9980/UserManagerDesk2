@@ -76,7 +76,7 @@ public class ManageController implements Initializable {
 
             if (currentCompte == null) {
                 if (CompteService.getInstance().add(compte)) {
-                    AlertUtils.makeInformation("Compte ajouté avec succés");
+                    AlertUtils.makeSuccessNotificationWithApi("Compte ajouté avec succés");
                     MainWindowController.getInstance().loadInterface(Constants.FXML_FRONT_DISPLAY_ALL_COMPTE);
                 } else {
                     AlertUtils.makeError("Error");
@@ -84,7 +84,7 @@ public class ManageController implements Initializable {
             } else {
                 compte.setId(currentCompte.getId());
                 if (CompteService.getInstance().edit(compte)) {
-                    AlertUtils.makeInformation("Compte modifié avec succés");
+                    AlertUtils.makeSuccessNotificationWithApi("Compte modifié avec succés");
                     ShowAllController.currentCompte = null;
                     MainWindowController.getInstance().loadInterface(Constants.FXML_FRONT_DISPLAY_ALL_COMPTE);
                 } else {

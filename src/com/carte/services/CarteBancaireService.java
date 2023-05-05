@@ -86,7 +86,7 @@ public class CarteBancaireService {
             preparedStatement.setInt(1, carteBancaire.getType().getId());
             preparedStatement.setInt(2, carteBancaire.getCompte().getId());
             preparedStatement.setString(3, carteBancaire.getNom());
-            preparedStatement.setLong(4, 0);
+            preparedStatement.setLong(4, carteBancaire.getNumCarte());
             preparedStatement.setInt(5, 0);
             preparedStatement.setString(6, carteBancaire.getEmail());
             preparedStatement.setDate(7, Date.valueOf(carteBancaire.getDate()));
@@ -154,15 +154,16 @@ public class CarteBancaireService {
 
     public boolean editForUser(CarteBancaire carteBancaire) {
 
-        String request = "UPDATE `carte_bancaire` SET `id_type` = ?, `compte` = ?, `nom` = ?, `email` = ?, `date` = ? WHERE `id`=" + carteBancaire.getId();
+        String request = "UPDATE `carte_bancaire` SET `id_type` = ?, `compte` = ?,`num_carte` = ?, `nom` = ?, `email` = ?, `date` = ? WHERE `id`=" + carteBancaire.getId();
         try {
             preparedStatement = connection.prepareStatement(request);
 
             preparedStatement.setInt(1, carteBancaire.getType().getId());
             preparedStatement.setInt(2, carteBancaire.getCompte().getId());
-            preparedStatement.setString(3, carteBancaire.getNom());
-            preparedStatement.setString(4, carteBancaire.getEmail());
-            preparedStatement.setDate(5, Date.valueOf(carteBancaire.getDate()));
+            preparedStatement.setLong(3, carteBancaire.getNumCarte());
+            preparedStatement.setString(4, carteBancaire.getNom());
+            preparedStatement.setString(5, carteBancaire.getEmail());
+            preparedStatement.setDate(6, Date.valueOf(carteBancaire.getDate()));
 
             preparedStatement.executeUpdate();
             System.out.println("CarteBancaire edited");

@@ -57,20 +57,22 @@ public class ManageController implements Initializable {
                     LocalDate.now()
             );
 
-            if (TransactionService.getInstance().add(transaction)) {
-                Compte sourceAccount = sourceAccountCB.getValue();
-                Compte destinationAccount = destinationAccountCB.getValue();
+            Compte sourceAccount = sourceAccountCB.getValue();
+            Compte destinationAccount = destinationAccountCB.getValue();
 
-                sourceAccount.setBalance(sourceAccount.getBalance() - Float.parseFloat(amountTF.getText()));
-                destinationAccount.setBalance(destinationAccount.getBalance() + Float.parseFloat(amountTF.getText()));
+            sourceAccount.setBalance(sourceAccount.getBalance() - Float.parseFloat(amountTF.getText()));
+            destinationAccount.setBalance(destinationAccount.getBalance() + Float.parseFloat(amountTF.getText()));
 
-                if (CompteService.getInstance().edit(sourceAccount)) {
-                    if (CompteService.getInstance().edit(destinationAccount)) {
-                        if (TransactionService.getInstance().add(transaction)) {
-                            AlertUtils.makeInformation("Transaction effectué avec succés");
-                            MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_TRANSACTION);
-                        }
+            if (CompteService.getInstance().edit(sourceAccount)) {
+                if (CompteService.getInstance().edit(destinationAccount)) {
+                    if (TransactionService.getInstance().add(transaction)) {
+                        AlertUtils.makeSuccessNotificationWithApi("Transaction effectué avec succés");
+                        com.carte.gui.back.MainWindowController.getInstance().loadInterface(Constants.FXML_BACK_DISPLAY_ALL_TRANSACTION);
+                    } else {
+                        AlertUtils.makeError("Error");
                     }
+                } else {
+                    AlertUtils.makeError("Error");
                 }
             } else {
                 AlertUtils.makeError("Error");

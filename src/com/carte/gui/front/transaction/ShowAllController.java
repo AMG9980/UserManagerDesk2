@@ -15,13 +15,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -82,6 +85,7 @@ public class ShowAllController implements Initializable {
             ((Text) innerContainer.lookup("#amountText")).setText("Amount : " + transaction.getAmount());
             ((Text) innerContainer.lookup("#createdAtText")).setText("CreatedAt : " + transaction.getCreatedAt());
 
+            createQR(((ImageView) innerContainer.lookup("#qrImageView")), transaction);
 
             ((Button) innerContainer.lookup("#deleteButton")).setOnAction((event) -> supprimerTransaction(transaction));
 
@@ -116,6 +120,24 @@ public class ShowAllController implements Initializable {
         }
     }
 
+
+    public void createQR(ImageView qrIV, Transaction transaction) {
+        // GENERATE QR CODE
+        ByteArrayOutputStream out = QRCode.from(
+                "Source account " + transaction.getSourceAccount().toString() +
+                        "Destination account " + transaction.getDestinationAccount().toString() +
+                        "Amount " + transaction.getAmount()
+        ).to(ImageType.PNG).withSize(200, 200).stream();
+        ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
+        qrIV.setImage(new Image(in));
+
+        // SHOW QR CODE
+        BorderPane root = new BorderPane();
+        Image image = new Image(in);
+        ImageView view = new ImageView(image);
+        view.setStyle("-fx-stroke-width: 2; -fx-stroke: blue");
+        root.setCenter(view);
+    }
 
     @FXML
     private void search(KeyEvent event) {

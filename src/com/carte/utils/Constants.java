@@ -37,6 +37,24 @@ public class Constants {
     public static final String FXML_FRONT_MODEL_TYPE = "/com/carte/gui/front/type/Model.fxml";
     public static final String FXML_FRONT_MANAGE_TYPE = "/com/carte/gui/front/type/Manage.fxml";
 
+    // MESSAGE
+    public static final String FXML_BACK_DISPLAY_ALL_MESSAGE = "/com/carte/gui/back/message/ShowAll.fxml";
+    public static final String FXML_BACK_MODEL_MESSAGE = "/com/carte/gui/back/message/Model.fxml";
+    public static final String FXML_BACK_MANAGE_MESSAGE = "/com/carte/gui/back/message/Manage.fxml";
+    public static final String FXML_FRONT_DISPLAY_ALL_MESSAGE = "/com/carte/gui/front/message/ShowAll.fxml";
+    public static final String FXML_FRONT_MODEL_MESSAGE = "/com/carte/gui/front/message/Model.fxml";
+    public static final String FXML_FRONT_MANAGE_MESSAGE = "/com/carte/gui/front/message/Manage.fxml";
+
+    // RECLAMATION
+    public static final String FXML_BACK_DISPLAY_ALL_RECLAMATION = "/com/carte/gui/back/reclamation/ShowAll.fxml";
+    public static final String FXML_BACK_MODEL_RECLAMATION = "/com/carte/gui/back/reclamation/Model.fxml";
+    public static final String FXML_BACK_MANAGE_RECLAMATION = "/com/carte/gui/back/reclamation/Manage.fxml";
+    public static final String FXML_FRONT_DISPLAY_ALL_RECLAMATION = "/com/carte/gui/front/reclamation/ShowAll.fxml";
+    public static final String FXML_FRONT_MODEL_RECLAMATION = "/com/carte/gui/front/reclamation/Model.fxml";
+    public static final String FXML_FRONT_MANAGE_RECLAMATION = "/com/carte/gui/front/reclamation/Manage.fxml";
+
+
+
 
     public static final String FXML_LOGIN = "/com/carte/gui/Login.fxml";
 

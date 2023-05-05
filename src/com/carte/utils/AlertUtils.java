@@ -2,6 +2,9 @@ package com.carte.utils;
 
 import javafx.scene.control.Alert;
 import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class AlertUtils {
 
@@ -27,5 +30,15 @@ public class AlertUtils {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public static void makeSuccessNotificationWithApi(String message) {
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tray.setTitle("Success");
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(3000));
     }
 }

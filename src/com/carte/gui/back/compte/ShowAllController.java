@@ -19,10 +19,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.*;
 
 public class ShowAllController implements Initializable {
@@ -37,11 +49,14 @@ public class ShowAllController implements Initializable {
     public VBox mainVBox;
     @FXML
     public ComboBox<String> sortCB;
+    @FXML
+    public Button exelButton;
 
     List<Compte> listCompte;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        exelButton.setTextFill(Color.WHITE);
         listCompte = CompteService.getInstance().getAll();
         sortCB.getItems().addAll("Name", "Balance", "Etat", "NumeroCompte", "Rib");
         displayData();
@@ -129,7 +144,51 @@ public class ShowAllController implements Initializable {
         displayData();
     }
 
-    private void specialAction(Compte compte) {
+    @FXML
+    public void makeExel() {
+        System.out.println("making exel");
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        try {
+            FileChooser chooser = new FileChooser();
+            // Set extension filter
+            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Excel Files(.xls)", ".xls");
+            chooser.getExtensionFilters().add(filter);
 
+            HSSFSheet workSheet = workbook.createSheet("sheet 0");
+            workSheet.setColumnWidth(1, 25);
+
+            HSSFFont fontBold = workbook.createFont();
+            fontBold.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            HSSFCellStyle styleBold = workbook.createCellStyle();
+            styleBold.setFont(fontBold);
+
+            Row row1 = workSheet.createRow((short) 0);
+            workSheet.autoSizeColumn(7);
+
+            row1.createCell(0).setCellValue("Id");
+            row1.createCell(1).setCellValue("Name");
+            row1.createCell(2).setCellValue("Balance");
+            row1.createCell(3).setCellValue("Etat");
+            row1.createCell(4).setCellValue("NumeroCompte");
+            row1.createCell(5).setCellValue("Rib");
+
+            int i = 0;
+            for (Compte compte : listCompte) {
+                i++;
+                Row row2 = workSheet.createRow((short) i);
+                row2.createCell(0).setCellValue(compte.getId());
+                row2.createCell(1).setCellValue(compte.getName());
+                row2.createCell(2).setCellValue(compte.getBalance());
+                row2.createCell(3).setCellValue(compte.getEtat());
+                row2.createCell(4).setCellValue(compte.getNumeroCompte());
+                row2.createCell(5).setCellValue(compte.getRib());
+            }
+
+            workbook.write(Files.newOutputStream(Paths.get("compte.xls")));
+            Desktop.getDesktop().open(new File("compte.xls"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

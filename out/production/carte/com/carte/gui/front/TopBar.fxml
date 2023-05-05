@@ -54,7 +54,35 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
+
+        <Button fx:id="btnMessages" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                mnemonicParsing="false" onAction="#afficherMessages" text="Messages" textFill="WHITE">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+            <font>
+                <Font name="Segoe UI Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+
+        <Button fx:id="btnReclamations" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                mnemonicParsing="false" onAction="#afficherReclamations" text="Reclamations" textFill="WHITE">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+            <font>
+                <Font name="Segoe UI Bold" size="15.0"/>
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
     </HBox>
+
+
     <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
             onAction="#logout" style="-fx-background-color: red;" text="Logout" textFill="WHITE"
             AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">

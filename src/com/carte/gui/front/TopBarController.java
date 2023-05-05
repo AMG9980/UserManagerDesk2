@@ -34,6 +34,12 @@ public class TopBarController implements Initializable {
     private Button btnCarteBancaires;
 
     @FXML
+    private Button btnMessages;
+
+    @FXML
+    private Button btnReclamations;
+
+    @FXML
     private AnchorPane mainComponent;
 
     @Override
@@ -43,6 +49,8 @@ public class TopBarController implements Initializable {
                 btnComptes,
                 btnTransactions,
                 btnCarteBancaires,
+                btnMessages,
+                btnReclamations
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -54,10 +62,6 @@ public class TopBarController implements Initializable {
         }
 
         btnComptes.setTextFill(COLOR_DARK);
-
-        btnTransactions.setTextFill(COLOR_DARK);
-
-        btnCarteBancaires.setTextFill(COLOR_DARK);
 
     }
 
@@ -83,6 +87,22 @@ public class TopBarController implements Initializable {
 
         btnCarteBancaires.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnCarteBancaires, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+
+
+    @FXML
+    private void afficherMessages(ActionEvent event) {
+        goToLink(Constants.FXML_FRONT_DISPLAY_ALL_MESSAGE);
+
+        btnMessages.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnMessages, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+    @FXML
+    private void afficherReclamations(ActionEvent event) {
+        goToLink(Constants.FXML_FRONT_DISPLAY_ALL_RECLAMATION);
+
+        btnReclamations.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnReclamations, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
 
     private void goToLink(String link) {

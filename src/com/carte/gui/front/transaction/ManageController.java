@@ -66,10 +66,16 @@ public class ManageController implements Initializable {
             if (CompteService.getInstance().edit(sourceAccount)) {
                 if (CompteService.getInstance().edit(destinationAccount)) {
                     if (TransactionService.getInstance().add(transaction)) {
-                        AlertUtils.makeInformation("Transaction effectué avec succés");
+                        AlertUtils.makeSuccessNotificationWithApi("Transaction effectué avec succés");
                         com.carte.gui.front.MainWindowController.getInstance().loadInterface(Constants.FXML_FRONT_DISPLAY_ALL_TRANSACTION);
+                    } else {
+                        AlertUtils.makeError("Error");
                     }
+                } else {
+                    AlertUtils.makeError("Error");
                 }
+            } else {
+                AlertUtils.makeError("Error");
             }
 
         }

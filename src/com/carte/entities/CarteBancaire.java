@@ -149,4 +149,20 @@ public class CarteBancaire implements Comparable<CarteBancaire> {
                 return 0;
         }
     }
+
+    @Override
+    public String toString() {
+        return "CarteBancaire{" +
+                "id=" + id +
+                ", type=" + type +
+                ", compte=" + compte +
+                ", nom='" + nom + '\'' +
+                ", numCarte=" + numCarte +
+                ", cvv=" + cvv +
+                ", email='" + email + '\'' +
+                ", date=" + date +
+                ", dateExp=" + dateExp +
+                ", etat='" + etat + '\'' +
+                '}';
+    }
 }

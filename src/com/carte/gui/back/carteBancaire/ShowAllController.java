@@ -5,6 +5,10 @@ import com.carte.gui.back.MainWindowController;
 import com.carte.services.CarteBancaireService;
 import com.carte.utils.AlertUtils;
 import com.carte.utils.Constants;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +25,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.*;
 
 public class ShowAllController implements Initializable {
@@ -88,6 +97,7 @@ public class ShowAllController implements Initializable {
 
             ((Button) innerContainer.lookup("#editButton")).setOnAction((event) -> modifierCarteBancaire(carteBancaire));
             ((Button) innerContainer.lookup("#deleteButton")).setOnAction((event) -> supprimerCarteBancaire(carteBancaire));
+            ((Button) innerContainer.lookup("#generatePDFButton")).setOnAction((event) -> makePDF(carteBancaire));
 
 
         } catch (IOException ex) {
@@ -133,7 +143,35 @@ public class ShowAllController implements Initializable {
         displayData();
     }
 
-    private void specialAction(CarteBancaire carteBancaire) {
+    private void makePDF(CarteBancaire carteBancaire) {
 
+        Document document = new Document();
+        try {
+            PdfWriter writer = PdfWriter.getInstance(document, Files.newOutputStream(Paths.get("carteBancaire.pdf")));
+            document.open();
+
+            com.itextpdf.text.Font font = new com.itextpdf.text.Font();
+            font.setSize(20);
+
+            document.add(new Paragraph("- Carte Bancaire -"));
+            document.add(new Paragraph("Id : " + carteBancaire.getId()));
+            document.add(new Paragraph("Type : " + carteBancaire.getType()));
+            document.add(new Paragraph("Compte : " + carteBancaire.getCompte()));
+            document.add(new Paragraph("Nom : " + carteBancaire.getNom()));
+            document.add(new Paragraph("NumCarte : " + carteBancaire.getNumCarte()));
+            document.add(new Paragraph("Cvv : " + carteBancaire.getCvv()));
+            document.add(new Paragraph("Email : " + carteBancaire.getEmail()));
+            document.add(new Paragraph("Date : " + carteBancaire.getDate()));
+            document.add(new Paragraph("DateExp : " + carteBancaire.getDateExp()));
+            document.add(new Paragraph("Etat : " + carteBancaire.getEtat()));
+            document.newPage();
+            document.close();
+
+            writer.close();
+
+            Desktop.getDesktop().open(new File("carteBancaire.pdf"));
+        } catch (DocumentException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

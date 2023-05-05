@@ -27,7 +27,6 @@ public class MainApp extends Application {
         return instance;
     }
 
-
     @Override
     public void start(Stage primaryStage) {
         mainStage = primaryStage;
@@ -48,8 +47,8 @@ public class MainApp extends Application {
         loadScene(
                 Constants.FXML_FRONT_MAIN_WINDOW,
                 "",
+                1000,
                 800,
-                600,
                 false
         );
     }
@@ -59,7 +58,7 @@ public class MainApp extends Application {
                 Constants.FXML_BACK_MAIN_WINDOW,
                 "",
                 1000,
-                600,
+                800,
                 false
         );
     }

@@ -31,6 +31,10 @@ public class SideBarController implements Initializable {
     @FXML
     private Button btnCarteBancaires;
     @FXML
+    private Button btnMessages;
+    @FXML
+    private Button btnReclamations;
+    @FXML
     private Button btnTypes;
     @FXML
     private AnchorPane mainComponent;
@@ -43,6 +47,8 @@ public class SideBarController implements Initializable {
                 btnTransactions,
                 btnCarteBancaires,
                 btnTypes,
+                btnMessages,
+                btnReclamations,
         };
 
         mainComponent.setBackground(new Background(new BackgroundFill(COLOR_PRIMARY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -53,10 +59,6 @@ public class SideBarController implements Initializable {
             Animations.animateButton(lien, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
         }
         btnComptes.setTextFill(Color.WHITE);
-        btnTransactions.setTextFill(Color.WHITE);
-        btnCarteBancaires.setTextFill(Color.WHITE);
-        btnTypes.setTextFill(Color.WHITE);
-
     }
 
     @FXML
@@ -89,6 +91,22 @@ public class SideBarController implements Initializable {
 
         btnTypes.setTextFill(COLOR_PRIMARY);
         Animations.animateButton(btnTypes, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+
+    @FXML
+    private void afficherMessages(ActionEvent event) {
+        goToLink(Constants.FXML_BACK_DISPLAY_ALL_MESSAGE);
+
+        btnMessages.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnMessages, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
+    }
+
+    @FXML
+    private void afficherReclamations(ActionEvent event) {
+        goToLink(Constants.FXML_BACK_DISPLAY_ALL_RECLAMATION);
+
+        btnReclamations.setTextFill(COLOR_PRIMARY);
+        Animations.animateButton(btnReclamations, COLOR_GRAY, Color.WHITE, COLOR_PRIMARY, 0, false);
     }
 
     private void goToLink(String link) {
